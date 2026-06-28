@@ -1,0 +1,49 @@
+/* @import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography'; */
+
+@import "tailwindcss";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+/* Enable dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better default colors */
+body {
+    @apply bg-white text-slate-900 antialiased transition-colors duration-300;
+}
+
+.dark body {
+    @apply bg-slate-950 text-slate-100;
+}
+
+/* Better focus rings */
+:focus-visible {
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
+}
+
+.dark :focus-visible {
+    @apply ring-offset-slate-950;
+}
+
+/* Links */
+a {
+    @apply transition-colors;
+}
+
+/* Selection */
+::selection {
+    @apply bg-indigo-500 text-white;
+}
+
+/* Images */
+img {
+    @apply max-w-full;
+}

@@ -47,11 +47,69 @@ export const docsConfig: DocsConfig = {
             ]
         },
         {
-            title: "Guides",
+           title: "Appearance",
+           items: [
+             {
+                title: "Tables",
+                slug: "appearance/tables"
+             },
+             {
+                title: "Columns",
+                slug: "appearance/columns"
+             }
+           ]
+        },
+        {
+	title: "Fields",
+	items: [
+		{
+			title: "Overview",
+			slug: "fields/overview"
+		},
+		{
+			title: "Text Inputs",
+			slug: "fields/text"
+		},
+		{
+			title: "Numeric Inputs",
+			slug: "fields/number"
+		},
+		{
+			title: "Date & Time",
+			slug: "fields/datetime"
+		},
+		{
+			title: "Selection Controls",
+			slug: "fields/selection"
+		},
+		{
+			title: "Media & Files",
+			slug: "fields/media"
+		},
+		{
+			title: "Relationships",
+			slug: "fields/relationships"
+		},
+		{
+			title: "Structured Data",
+			slug: "fields/structured-data"
+		},
+		{
+			title: "Rich Text",
+			slug: "fields/wysiwyg"
+		},
+		{
+			title: "Special Fields",
+			slug: "fields/special"
+		}
+	]
+        },
+        {
+            title: "Security",
             items: [
                 {
-                    title: "Routing",
-                    slug: "getting-started/routing"
+                    title: "Overview",
+                    slug: "getting-started/overview"
                 },
                 {
                     title: "Layouts",
@@ -60,7 +118,16 @@ export const docsConfig: DocsConfig = {
             ]
         },
         {
-            title: "API",
+           title: "Files",
+           items: [
+            {
+                title: "Overview",
+                slug: "files/overview"
+            }
+           ]
+        },
+        {
+            title: "Advanced",
             items: [
                 {
                     title: "Tables",

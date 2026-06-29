@@ -109,7 +109,7 @@ export const docsConfig: DocsConfig = {
             items: [
                 {
                     title: "Overview",
-                    slug: "getting-started/overview"
+                    slug: "security/overview"
                 },
                 {
                     title: "Layouts",
@@ -123,6 +123,18 @@ export const docsConfig: DocsConfig = {
             {
                 title: "Overview",
                 slug: "files/overview"
+            },
+             {
+                title: "Local",
+                slug: "files/local"
+            },
+             {
+                title: "Cloudinary",
+                slug: "files/cloudinary"
+            },
+             {
+                title: "S3",
+                slug: "files/s3"
             }
            ]
         },

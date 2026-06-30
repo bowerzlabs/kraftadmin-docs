@@ -47,6 +47,3 @@ export function getAllPages() {
 export function pageExists(slug: string) {
 	return pages.some((page) => page.slug === slug);
 }
-
-// console.log("Pages:");
-console.table(pages);

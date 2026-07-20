@@ -41,20 +41,18 @@
 
         <!-- Logo -->
 
-        <a
-            href="/"
-            class="flex items-center gap-3"
-        >
-            <img
-                src="/logo.svg"
-                alt="KraftAdmin"
-                class="h-8 w-8 rounded"
-            />
+       <!-- Logo -->
+<a href="/" class="flex items-center gap-3">
+  <img
+    src="/kraftadmin1.png"
+    alt="KraftAdmin"
+    class="h-8 w-8 rounded"
+/>
 
-            <span class="text-lg font-bold">
-                KraftAdmin
-            </span>
-        </a>
+    <span class="text-lg font-bold">
+        KraftAdmin
+    </span>
+</a>
 
         <!-- Desktop Navigation -->
 
@@ -98,7 +96,7 @@
             </button>
 
             <a
-                href="https://github.com"
+                href="https://github.com/Kraft-Admin/kraftadmin"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"

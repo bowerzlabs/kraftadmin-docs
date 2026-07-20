@@ -3,7 +3,6 @@
 	import Sidebar from '$lib/components/docs/Sidebar.svelte';
 	import Breadcrumbs from '$lib/components/docs/Breadcrumbs.svelte';
 	import PrevNext from '$lib/components/docs/PrevNext.svelte';
-	import TableOfContents from '$lib/components/docs/TableOfContents.svelte';
 
 	let { slug } = $props();
 
@@ -17,7 +16,6 @@
 		if (!article) return;
 
 		article.querySelectorAll('pre').forEach((pre) => {
-			// Don't add twice
 			if (pre.querySelector('.copy-button')) return;
 
 			pre.classList.add('relative');
@@ -50,35 +48,43 @@
 	}
 
 	$effect(() => {
-		slug; // rerun when documentation page changes
+		slug;
 		enhanceCodeBlocks();
 	});
 </script>
 
-<div class="mx-auto grid max-w-7xl grid-cols-1 xl:grid-cols-[280px_minmax(0,1fr)_260px]">
+<div class="mx-auto flex max-w-7xl flex-col xl:flex-row">
 
-	<button
-		onclick={() => (sidebarOpen = !sidebarOpen)}
-		class="m-4 rounded-lg border border-slate-200 px-4 py-2 dark:border-slate-800 xl:hidden"
-	>
-		☰ Documentation
-	</button>
+	<!-- Mobile Header -->
+	<div class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800 xl:hidden">
 
+		<button
+			onclick={() => (sidebarOpen = !sidebarOpen)}
+			class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium transition hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-900"
+		>
+			{sidebarOpen ? '✕ Close' : '☰ Documentation'}
+		</button>
+
+	</div>
+
+	<!-- Sidebar -->
 	<aside
 		class:hidden={!sidebarOpen}
-		class="border-r dark:border-slate-800 dark:bg-slate-950 xl:block"
+		class="w-full shrink-0 border-b border-slate-200 dark:border-slate-800 dark:bg-slate-950 xl:block xl:w-64 xl:border-b-0 xl:border-r"
 	>
-		<Sidebar current={slug} />
+		<div class="xl:sticky xl:top-16 xl:max-h-[calc(100vh-4rem)] xl:overflow-y-auto">
+			<Sidebar current={slug} />
+		</div>
 	</aside>
 
-	<main class="min-w-0 px-6 py-8">
+	<!-- Main Content -->
+	<main class="min-w-0 flex-1 px-4 py-8 sm:px-6 lg:px-10">
 
-		<!-- <Breadcrumbs slug={slug} /> -->
 		<Breadcrumbs slug={slug} />
 
 		<article
 			bind:this={article}
-			class="prose prose-slate dark:prose-invert max-w-none"
+			class="prose prose-slate max-w-none dark:prose-invert"
 		>
 			<slot />
 		</article>
@@ -86,7 +92,5 @@
 		<PrevNext slug={slug} />
 
 	</main>
-
-	<TableOfContents />
 
 </div>

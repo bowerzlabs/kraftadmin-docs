@@ -3,7 +3,7 @@
         <div class="col-span-1 md:col-span-2">
             <span class="font-bold text-lg text-white">KRAFTPLATFORM</span>
             <p class="mt-4 text-slate-500 max-w-xs text-sm leading-relaxed">
-                Empowering Spring Boot developers with zero-footprint observability and modular administration tools. Built for the modern reactive stack.
+                Generate admin
             </p>
         </div>
         <div>

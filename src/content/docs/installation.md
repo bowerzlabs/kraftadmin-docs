@@ -1,7 +1,13 @@
+
+<script>
+    import { version } from '$lib/constants/constants';
+</script>
+
 ---
 title: Installation
 description: Install KraftAdmin into your Spring Boot project.
----
+--------------------------------------------------------------
+
 
 # Installation
 
@@ -14,10 +20,10 @@ KraftAdmin is distributed through Maven Central and can be installed using eithe
 Before installing KraftAdmin, ensure your project uses:
 
 | Requirement | Version |
-|-------------|----------|
-| Java | 21+ |
-| Kotlin | 2.1+ |
-| Spring Boot | 3.5+ |
+| ----------- | ------- |
+| Java        | 17+     |
+| Kotlin      | 1.9+    |
+| Spring Boot | 3.0+    |
 
 ---
 
@@ -26,10 +32,10 @@ Before installing KraftAdmin, ensure your project uses:
 The latest stable release is:
 
 ```text
-{{ latestVersion }}
+{version}
 ```
 
-> The documentation automatically displays the latest published version.
+> The version shown above is retrieved automatically from the latest KraftAdmin release.
 
 ---
 
@@ -37,7 +43,7 @@ The latest stable release is:
 
 ```kotlin
 dependencies {
-    implementation("com.kraftadmin:kraftadmin:{{ latestVersion }}")
+    implementation("com.kraftadmin:kraftadmin:{version}")
 }
 ```
 
@@ -47,7 +53,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.kraftadmin:kraftadmin:{{ latestVersion }}'
+    implementation 'com.kraftadmin:kraftadmin:{version}'
 }
 ```
 
@@ -59,7 +65,7 @@ dependencies {
 <dependency>
     <groupId>com.kraftadmin</groupId>
     <artifactId>kraftadmin</artifactId>
-    <version>{{ latestVersion }}</version>
+    <version>{version}</version>
 </dependency>
 ```
 
@@ -67,38 +73,22 @@ dependencies {
 
 # Snapshot Versions
 
-For testing upcoming features, snapshot releases are available.
+For testing upcoming features, snapshot releases may be available.
 
-```kotlin
-implementation("com.kraftadmin:kraftadmin:{{ snapshotVersion }}")
-```
+Snapshot versions are intended for development and testing rather than production deployments.
 
 ---
 
 # Verify Installation
 
-Create your first admin resource.
+After adding the dependency, start your Spring Boot application.
 
-```kotlin
-@KraftAdminResource
-data class User(
-    @Id
-    val id: Long,
+KraftAdmin should be available at:
 
-    val name: String
-)
-```
-
-Start your application and navigate to:
-
-```
+```text
 http://localhost:8080/admin
 ```
 
+The `/admin` path is currently the default and only supported administration path.
+
 ---
-
-# Next Steps
-
-- Configure KraftAdmin
-- Secure the dashboard
-- Create your first resource

@@ -1,546 +1,531 @@
 ---
+
 title: Configuration
-description: Configure KraftAdmin using a single centralized configuration object.
----
+description: Configure KraftAdmin using Spring Boot configuration properties.
+-----------------------------------------------------------------------------
 
 # Configuration
 
-KraftAdmin is configured through a single configuration interface.
+KraftAdmin is configured using standard Spring Boot configuration properties.
 
-Rather than scattering settings across multiple builders or annotations, every global option lives under `KraftAdminPropertiesConfig`.
+You can configure KraftAdmin using either:
 
-This makes it easy to configure branding, storage, security, pagination, localization, and platform features from one place.
+* `application.yml`
+* `application.properties`
+
+All KraftAdmin configuration properties use the `kraftadmin` prefix.
+
+> **Note:** Telemetry and application monitoring are no longer part of KraftAdmin configuration. Telemetry has been moved to a separate project so that KraftAdmin can remain focused on administration functionality.
 
 ---
 
-# Configuration Structure
+# Enable KraftAdmin
+
+The minimum configuration required to enable KraftAdmin is:
+
+## application.yml
+
+```yaml
+kraftadmin:
+  enabled: true
+```
+
+## application.properties
+
+```properties
+kraftadmin.enabled=true
+```
+
+When enabled, KraftAdmin registers its administration panel and API endpoints.
+
+The administration panel is currently available at:
 
 ```text
-KraftAdminPropertiesConfig
-├── General
-├── Theme
-├── Storage
-├── Security
-├── Pagination
-├── Features
-├── Localization
-└── Telemetry
+/admin
 ```
-
-Each section controls a different aspect of the administration panel.
 
 ---
 
-# Basic Configuration
+# Complete Configuration
 
-A typical implementation looks like:
+The following examples show the available KraftAdmin configuration options.
 
-```kotlin
-class MyAdminConfiguration : KraftAdminPropertiesConfig {
+## application.yml
 
-    override val enabled = true
+```yaml
+kraftadmin:
+  # General Settings
+  enabled: true
+  base-path: /admin
+  title: "KraftAdmin Dashboard"
+  logo-url: "https://your-assets.com/logo.png"
 
-    override val basePath = "/admin"
+  # Theme
+  theme:
+    primary-color: "#3b82f6"
+    dark-mode: true
 
-    override val title = "KraftAdmin"
+  # Storage
+  storage:
+    upload-dir: "uploads/admin"
+    public-url-prefix: "/admin/files"
 
-    override val version = "1.0.0"
+  # Security
+  security:
+    session-expiry-minutes: 120
+    cookie-name: "KRAFTADMIN_SESSION"
 
-    override val logoUrl = "/images/logo.svg"
+    required-roles:
+      - ROLE_ADMIN
 
-    override val theme = MyThemeConfig()
+    protected-routes:
+      "/api/users/**":
+        - ROLE_SUPERUSER
+      "/api/settings/**":
+        - ROLE_ADMIN
 
-    override val storage = MyStorageConfig()
+    basic-auth:
+      username: "admin"
+      password: "your-secure-password"
 
-    override val security = MySecurityConfig()
+  # Pagination
+  pagination:
+    default-page-size: 20
+    max-page-size: 100
 
-    override val pagination = MyPaginationConfig()
+  # Feature Toggles
+  features:
+    allow-delete: true
+    show-timestamps: true
+    read-only: false
 
-    override val features = MyFeatureConfig()
-
-    override val localeConfig = MyLocaleConfig()
-
-    override val telemetryConfig = MyTelemetryConfig()
-}
+  # Locale & Timezone
+  locale-config:
+    default-language: "en"
+    timezone: "Africa/Nairobi"
 ```
+
+---
+
+## application.properties
+
+```properties
+# General Settings
+kraftadmin.enabled=true
+kraftadmin.base-path=/admin
+kraftadmin.title=KraftAdmin Dashboard
+kraftadmin.logo-url=https://your-assets.com/logo.png
+
+# Theme
+kraftadmin.theme.primary-color=#3b82f6
+kraftadmin.theme.dark-mode=true
+
+# Storage
+kraftadmin.storage.upload-dir=uploads/admin
+kraftadmin.storage.public-url-prefix=/admin/files
+
+# Security
+kraftadmin.security.session-expiry-minutes=120
+kraftadmin.security.cookie-name=KRAFTADMIN_SESSION
+
+# Required Roles
+kraftadmin.security.required-roles[0]=ROLE_ADMIN
+
+# Protected Routes
+kraftadmin.security.protected-routes./api/users/**=ROLE_SUPERUSER
+kraftadmin.security.protected-routes./api/settings/**=ROLE_ADMIN
+
+# Basic Authentication Fallback
+kraftadmin.security.basic-auth.username=admin
+kraftadmin.security.basic-auth.password=your-secure-password
+
+# Pagination
+kraftadmin.pagination.default-page-size=20
+kraftadmin.pagination.max-page-size=100
+
+# Feature Toggles
+kraftadmin.features.allow-delete=true
+kraftadmin.features.show-timestamps=true
+kraftadmin.features.read-only=false
+
+# Locale & Timezone
+kraftadmin.locale-config.default-language=en
+kraftadmin.locale-config.timezone=Africa/Nairobi
+```
+
+> **Security note:** Avoid committing passwords directly to source control. Use environment variables or another secrets management solution for sensitive values.
 
 ---
 
 # General Settings
 
-These properties define the overall administration panel.
+General settings control the main administration panel.
+
+```yaml
+kraftadmin:
+  enabled: true
+  base-path: /admin
+  title: "KraftAdmin Dashboard"
+  logo-url: "https://your-assets.com/logo.png"
+```
 
 ## enabled
 
-Globally enables or disables KraftAdmin.
+Enables or disables KraftAdmin.
 
-```kotlin
-override val enabled = true
+```yaml
+kraftadmin:
+  enabled: true
 ```
 
-If disabled, the administration panel is unavailable.
+Set this to `false` to disable KraftAdmin without removing the dependency.
 
----
+## base-path
 
-## basePath
+Defines the base path used by KraftAdmin.
 
-The URL where the administration panel is served.
-
-```kotlin
-override val basePath = "/admin"
+```yaml
+kraftadmin:
+  base-path: /admin
 ```
 
-Examples:
-
-```
-/admin
-```
-
-```
-/dashboard
-```
-
-```
-/management
-```
-
----
+> **Current limitation:** `/admin` is currently the only supported administration path. The `base-path` property is reserved for future configurability.
 
 ## title
 
-Application title displayed throughout the interface.
+Defines the title displayed throughout the administration panel.
 
-```kotlin
-override val title = "KraftAdmin"
+```yaml
+kraftadmin:
+  title: "My Application"
 ```
 
-Typically appears in:
+The title may be used in areas such as navigation and page metadata.
 
-- Sidebar
-- Login page
-- Browser title
-- Navigation
+## logo-url
 
----
+Defines the logo displayed in the administration interface.
 
-## version
-
-Displays the application version.
-
-```kotlin
-override val version = "2.1.0"
-```
-
-Useful for identifying deployments.
-
----
-
-## logoUrl
-
-Optional logo displayed throughout the administration panel.
-
-```kotlin
-override val logoUrl = "/images/logo.svg"
-```
-
-If omitted, the default branding is used.
-
----
-
-# Theme Configuration
-
-Theme customization is handled by `ThemeConfig`.
-
-```kotlin
-interface ThemeConfig {
-
-    val primaryColor: String
-
-    val darkMode: Boolean
-
-}
+```yaml
+kraftadmin:
+  logo-url: "/images/logo.svg"
 ```
 
 ---
 
-## primaryColor
+# Theme
 
-Primary accent color.
+Theme settings are configured under `kraftadmin.theme`.
 
-```kotlin
-override val primaryColor = "#2563eb"
+```yaml
+kraftadmin:
+  theme:
+    primary-color: "#3b82f6"
+    dark-mode: true
 ```
 
-This color is used for:
+## primary-color
 
-- Buttons
-- Links
-- Active navigation
-- Progress indicators
-- Highlights
+Defines the primary accent color used throughout the interface.
 
----
-
-## darkMode
-
-Controls the application's default theme.
-
-```kotlin
-override val darkMode = true
+```yaml
+kraftadmin:
+  theme:
+    primary-color: "#3b82f6"
 ```
 
-Applications may choose to:
+The primary color may be used for:
 
-- Always use dark mode
-- Always use light mode
-- Respect the user's preference (future support)
+* Buttons
+* Links
+* Active navigation
+* Highlights
+* Other primary interface elements
 
----
+## dark-mode
 
-# Storage Configuration
+Controls whether dark mode is enabled.
 
-Storage settings define where uploaded files are stored.
-
-```kotlin
-interface StorageConfig {
-
-    val uploadDir: String
-
-    val publicUrlPrefix: String
-
-}
-```
-
-Example:
-
-```kotlin
-override val uploadDir = "uploads/admin"
-
-override val publicUrlPrefix = "/admin/files"
-```
-
-These settings are primarily used by the Local Storage provider.
-
-Cloud providers such as Cloudinary and Amazon S3 ignore these values.
-
----
-
-# Security Configuration
-
-Security settings control authentication and authorization.
-
-```kotlin
-interface SecurityConfig {
-
-    val cookieName: String
-
-    val sessionExpiryMinutes: Long
-
-    val requiredRoles: Set<String>
-
-    val protectedRoutes: Map<String, Set<String>>
-
-    val basicAuth: BasicAuthConfig
-
-}
+```yaml
+kraftadmin:
+  theme:
+    dark-mode: true
 ```
 
 ---
 
-## cookieName
+# Storage
 
-Session cookie used by KraftAdmin.
+Storage settings control uploaded files.
 
-```kotlin
-override val cookieName = "admin_session"
+```yaml
+kraftadmin:
+  storage:
+    upload-dir: "uploads/admin"
+    public-url-prefix: "/admin/files"
+```
+
+## upload-dir
+
+Defines the directory where files are stored when using local storage.
+
+```yaml
+kraftadmin:
+  storage:
+    upload-dir: "uploads/admin"
+```
+
+## public-url-prefix
+
+Defines the URL prefix used to access uploaded files.
+
+```yaml
+kraftadmin:
+  storage:
+    public-url-prefix: "/admin/files"
 ```
 
 ---
 
-## sessionExpiryMinutes
+# Security
 
-Determines how long authenticated sessions remain valid.
+Security settings control authentication, sessions, and authorization.
 
-```kotlin
-override val sessionExpiryMinutes = 60
+```yaml
+kraftadmin:
+  security:
+    session-expiry-minutes: 120
+    cookie-name: "KRAFTADMIN_SESSION"
+    required-roles:
+      - ROLE_ADMIN
 ```
 
----
+For more information, see the [Security](/docs/security) guide.
 
-## requiredRoles
+## session-expiry-minutes
 
-Defines which authenticated users may access the administration panel.
+Defines how long a KraftAdmin session remains valid.
 
-```kotlin
-override val requiredRoles = setOf(
-    "ROLE_ADMIN",
-    "ROLE_SUPER_ADMIN"
-)
+```yaml
+kraftadmin:
+  security:
+    session-expiry-minutes: 120
 ```
 
-Only users possessing one of these roles may access the dashboard.
+## cookie-name
 
----
+Defines the name of the cookie used for KraftAdmin sessions.
 
-## protectedRoutes
-
-Allows finer-grained authorization.
-
-Example:
-
-```kotlin
-override val protectedRoutes = mapOf(
-
-    "/api/resources/User" to setOf("ROLE_SUPER_ADMIN"),
-
-    "/api/resources/AuditLog" to setOf("ROLE_AUDITOR")
-
-)
+```yaml
+kraftadmin:
+  security:
+    cookie-name: "KRAFTADMIN_SESSION"
 ```
 
-Different administration resources can therefore require different roles.
+## required-roles
 
----
+Restricts access to users with the specified roles.
 
-## basicAuth
-
-Configuration for KraftAdmin's built-in Basic Authentication provider.
-
-```kotlin
-override val basicAuth = BasicAuthConfig(
-    username = "admin",
-    password = "secret"
-)
+```yaml
+kraftadmin:
+  security:
+    required-roles:
+      - ROLE_ADMIN
+      - ROLE_SUPERUSER
 ```
 
-This is primarily used when no external security framework is available.
+A user must have one of the configured roles to access the administration panel.
+
+## protected-routes
+
+Allows individual routes to require specific roles.
+
+```yaml
+kraftadmin:
+  security:
+    protected-routes:
+      "/api/users/**":
+        - ROLE_SUPERUSER
+      "/api/settings/**":
+        - ROLE_ADMIN
+```
+
+This allows different parts of the administration API to have different access requirements.
+
+## Basic Authentication
+
+When Spring Security is not available, KraftAdmin can use its built-in Basic Authentication fallback.
+
+```yaml
+kraftadmin:
+  security:
+    basic-auth:
+      username: "admin"
+      password: "your-secure-password"
+```
+
+For production applications, store credentials outside your configuration files.
+
+For example:
+
+```yaml
+kraftadmin:
+  security:
+    basic-auth:
+      username: "${KRAFTADMIN_USERNAME}"
+      password: "${KRAFTADMIN_PASSWORD}"
+```
 
 ---
 
 # Pagination
 
-Pagination controls how many records appear in tables.
+Pagination settings control how many records are displayed in tables.
 
-```kotlin
-interface PaginationConfig {
-
-    val defaultPageSize: Int
-
-    val maxPageSize: Int
-
-}
+```yaml
+kraftadmin:
+  pagination:
+    default-page-size: 20
+    max-page-size: 100
 ```
 
-Example:
+## default-page-size
 
-```kotlin
-override val defaultPageSize = 20
+Defines the default number of records displayed per page.
 
-override val maxPageSize = 100
+```yaml
+kraftadmin:
+  pagination:
+    default-page-size: 20
+```
+
+## max-page-size
+
+Defines the maximum number of records that can be requested on a single page.
+
+```yaml
+kraftadmin:
+  pagination:
+    max-page-size: 100
 ```
 
 ---
 
 # Feature Toggles
 
-Feature flags enable or disable functionality globally.
+Feature toggles control global functionality.
 
-```kotlin
-interface FeatureConfig {
+```yaml
+kraftadmin:
+  features:
+    allow-delete: true
+    show-timestamps: true
+    read-only: false
+```
 
-    val allowDelete: Boolean
+## allow-delete
 
-    val showTimestamps: Boolean
+Controls whether delete operations are available.
 
-    val readOnly: Boolean
+```yaml
+kraftadmin:
+  features:
+    allow-delete: false
+```
 
-}
+Set this to `false` to disable delete operations globally.
+
+## show-timestamps
+
+Controls whether timestamp fields such as `createdAt` and `updatedAt` are displayed.
+
+```yaml
+kraftadmin:
+  features:
+    show-timestamps: true
+```
+
+## read-only
+
+Makes the administration panel read-only.
+
+```yaml
+kraftadmin:
+  features:
+    read-only: true
+```
+
+When enabled, users can view data but cannot modify it.
+
+---
+
+# Locale and Timezone
+
+Locale settings are configured under `locale-config`.
+
+```yaml
+kraftadmin:
+  locale-config:
+    default-language: "en"
+    timezone: "Africa/Nairobi"
+```
+
+## default-language
+
+Defines the default language used by the administration panel.
+
+```yaml
+kraftadmin:
+  locale-config:
+    default-language: "en"
+```
+
+## timezone
+
+Defines the timezone used when displaying dates and times.
+
+```yaml
+kraftadmin:
+  locale-config:
+    timezone: "Africa/Nairobi"
 ```
 
 ---
 
-## allowDelete
+# Environment Variables
 
-Globally enables or disables delete operations.
+Spring Boot allows configuration values to be supplied through environment variables.
 
-```kotlin
-override val allowDelete = false
+For example:
+
+```bash
+export KRAFTADMIN_SECURITY_BASIC_AUTH_USERNAME=admin
+export KRAFTADMIN_SECURITY_BASIC_AUTH_PASSWORD=secret
 ```
 
-Useful in production environments.
+You can also reference environment variables from your configuration files:
 
----
-
-## showTimestamps
-
-Displays common audit fields.
-
-```kotlin
-override val showTimestamps = true
+```yaml
+kraftadmin:
+  security:
+    basic-auth:
+      username: "${KRAFTADMIN_USERNAME}"
+      password: "${KRAFTADMIN_PASSWORD}"
 ```
 
-This affects fields such as:
-
-- createdAt
-- updatedAt
-
----
-
-## readOnly
-
-Turns the administration panel into a read-only interface.
-
-```kotlin
-override val readOnly = true
-```
-
-Administrators may browse data but cannot modify it.
-
----
-
-# Localization
-
-Localization controls language and timezone.
-
-```kotlin
-interface LocaleConfig {
-
-    val defaultLanguage: String
-
-    val timezone: String
-
-}
-```
-
-Example:
-
-```kotlin
-override val defaultLanguage = "en"
-
-override val timezone = "Africa/Nairobi"
-```
-
-Future versions will use these settings for:
-
-- Date formatting
-- Number formatting
-- Localization
-- Regional preferences
-
----
-
-# Telemetry
-
-Telemetry enables diagnostics and optional cloud integrations.
-
-```kotlin
-interface TelemetryConfig {
-
-    var enabled: Boolean
-
-    var cloudUrl: String
-
-    var path: String?
-
-    var provider: TelemetryProvider
-
-    val apiKey: String?
-
-    val secretKey: String?
-
-}
-```
-
----
-
-## enabled
-
-Enables telemetry.
-
-```kotlin
-enabled = true
-```
-
----
-
-## provider
-
-Selects the telemetry backend.
-
-```kotlin
-provider = TelemetryProvider.LOCAL
-```
-
-Available providers:
-
-- LOCAL
-- CLOUD
-
----
-
-## cloudUrl
-
-Endpoint used when cloud telemetry is enabled.
-
-```kotlin
-cloudUrl = "https://telemetry.example.com"
-```
-
----
-
-## apiKey
-
-Authentication key used by cloud providers.
-
-```kotlin
-apiKey = "..."
-```
-
----
-
-## secretKey
-
-Optional secret used to authenticate telemetry requests.
-
-```kotlin
-secretKey = "..."
-```
+This is recommended for passwords and other sensitive values.
 
 ---
 
 # Configuration Overview
 
-| Section | Purpose |
-|---------|---------|
-| General | Application metadata and routing |
-| Theme | Branding and appearance |
-| Storage | Local upload configuration |
-| Security | Authentication and authorization |
-| Pagination | Table pagination defaults |
-| Features | Global feature toggles |
-| Localization | Language and timezone |
-| Telemetry | Monitoring and cloud services |
+| Section    | Purpose                                    |
+| ---------- | ------------------------------------------ |
+| General    | Enable KraftAdmin and configure branding   |
+| Theme      | Configure colors and dark mode             |
+| Storage    | Configure uploaded file storage            |
+| Security   | Configure authentication and authorization |
+| Pagination | Configure table page sizes                 |
+| Features   | Enable or disable global functionality     |
+| Locale     | Configure language and timezone            |
 
----
-
-# Best Practices
-
-For production deployments, consider the following recommendations:
-
-- Use descriptive application titles.
-- Configure a custom logo to match your organization's branding.
-- Restrict access using `requiredRoles`.
-- Disable delete operations if accidental data loss is a concern.
-- Use read-only mode for reporting environments.
-- Store sensitive credentials such as API keys and secrets in environment variables rather than source code.
-- Configure telemetry only if monitoring or cloud services are required.
-
----
-
-# Next Steps
-
-- Configure Security
-- Configure File Storage
-- Customize Themes
-- Define Admin Resources
-- Explore Feature Toggles

@@ -26,15 +26,16 @@
 
 	<div class="mx-auto flex max-w-5xl flex-col items-center px-6 py-28 text-center">
 
-		<div class="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-300">
-
-			🚧 {version} • Beta
-
+		<div
+			class="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-300"
+		>
+			{version} · Beta
 		</div>
 
 		<h1 class="max-w-4xl text-5xl font-black tracking-tight lg:text-7xl">
 
 			Generate administration panels
+
 			<span class="text-indigo-600 dark:text-indigo-400">
 				from your Spring Boot entities.
 			</span>
@@ -45,8 +46,8 @@
 
 			KraftAdmin is an annotation-driven administration framework for
 			Spring Boot that generates CRUD interfaces directly from your
-			domain model. Spend less time building admin dashboards and more
-			time building your application.
+			domain model. Spend less time building administration interfaces
+			and more time building your application.
 
 		</p>
 
@@ -54,14 +55,14 @@
 
 			<a
 				href="/docs/introduction"
-				class="rounded-xl bg-indigo-600 px-8 py-4 font-semibold text-white hover:bg-indigo-500"
+				class="rounded-xl bg-indigo-600 px-8 py-4 font-semibold text-white transition hover:bg-indigo-500"
 			>
 				Get Started
 			</a>
 
 			<a
 				href="/docs"
-				class="rounded-xl border border-slate-300 px-8 py-4 font-semibold hover:border-indigo-500 dark:border-slate-700"
+				class="rounded-xl border border-slate-300 px-8 py-4 font-semibold transition hover:border-indigo-500 dark:border-slate-700"
 			>
 				Documentation
 			</a>
@@ -69,7 +70,8 @@
 			<a
 				href="https://github.com/bowerzlabs/kraftadmin"
 				target="_blank"
-				class="rounded-xl border border-slate-300 px-8 py-4 font-semibold hover:border-indigo-500 dark:border-slate-700"
+				rel="noopener noreferrer"
+				class="rounded-xl border border-slate-300 px-8 py-4 font-semibold transition hover:border-indigo-500 dark:border-slate-700"
 			>
 				GitHub
 			</a>
@@ -100,15 +102,164 @@
 
 		</div>
 
-		<div class="mt-10 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-sm text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300">
+		<div
+	class="mt-10 w-full max-w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
+>
+	<code class="break-all">
+		implementation("com.kraftadmin:kraftadmin:{version}")
+	</code>
+</div>
 
-			📦 <code>implementation("com.bowerzlabs:kraft-admin:{version}")</code>
+	</div>
+
+</section>
+
+
+<!-- Product Showcase -->
+
+<section class="min-w-0 overflow-hidden border-b border-slate-200 py-20 dark:border-slate-800">
+
+<div class="mx-auto min-w-0 max-w-7xl px-4 sm:px-6">
+
+	<div class="mx-auto mb-12 max-w-3xl text-center">
+
+		<p class="mb-4 text-sm font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+			KraftAdmin in action
+		</p>
+
+		<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+			Your application data, ready to manage.
+		</h2>
+
+		<p class="mt-5 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 dark:text-slate-400">
+			From generated resource tables to forms, relationships and custom
+			actions, KraftAdmin gives your Spring Boot application a complete
+			administration interface with minimal configuration.
+		</p>
+
+	</div>
+
+
+	<!-- Horizontal Showcase -->
+
+	<div class="relative min-w-0">
+
+		<div
+			class="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-6 sm:gap-6"
+		>
+
+			<!-- Dashboard -->
+
+			<article
+				class="w-[calc(100vw-2rem)] shrink-0 snap-center sm:w-[85vw] sm:max-w-5xl"
+			>
+
+				<div
+					class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:rounded-2xl"
+				>
+
+					<img
+						src="/dashboard.png"
+						alt="KraftAdmin dashboard"
+						class="block aspect-video w-full object-cover"
+					/>
+
+				</div>
+
+				<p class="mt-3 text-center text-sm text-slate-500">
+					Generated administration dashboard
+				</p>
+
+			</article>
+
+
+			<!-- Resource List -->
+
+			<article
+				class="w-[calc(100vw-2rem)] shrink-0 snap-center sm:w-[85vw] sm:max-w-5xl"
+			>
+
+				<div
+					class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:rounded-2xl"
+				>
+
+					<img
+						src="/list.png"
+						alt="KraftAdmin resource list"
+						class="block aspect-video w-full object-cover"
+					/>
+
+				</div>
+
+				<p class="mt-3 text-center text-sm text-slate-500">
+					Searchable, sortable and filterable resource tables
+				</p>
+
+			</article>
+
+
+			<!-- Forms -->
+
+			<article
+				class="w-[calc(100vw-2rem)] shrink-0 snap-center sm:w-[85vw] sm:max-w-5xl"
+			>
+
+				<div
+					class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:rounded-2xl"
+				>
+
+					<img
+						src="/form.png"
+						alt="KraftAdmin form interface"
+						class="block aspect-video w-full object-cover"
+					/>
+
+				</div>
+
+				<p class="mt-3 text-center text-sm text-slate-500">
+					Generated forms with validation and custom field configuration
+				</p>
+
+			</article>
+
+
+			<!-- Details -->
+
+			<article
+				class="w-[calc(100vw-2rem)] shrink-0 snap-center sm:w-[85vw] sm:max-w-5xl"
+			>
+
+				<div
+					class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:rounded-2xl"
+				>
+
+					<img
+						src="/details.png"
+						alt="KraftAdmin details screen"
+						class="block aspect-video w-full object-cover"
+					/>
+
+				</div>
+
+				<p class="mt-3 text-center text-sm text-slate-500">
+					Generated details screen
+				</p>
+
+			</article>
 
 		</div>
 
 	</div>
 
+
+	<p class="mt-3 text-center text-sm text-slate-400">
+		Swipe or scroll horizontally to explore
+	</p>
+
+</div>
+
 </section>
+
 
 <!-- Beta -->
 
@@ -128,6 +279,7 @@
 
 </section>
 
+
 <!-- Features -->
 
 <section class="mx-auto max-w-7xl px-6 py-16">
@@ -139,50 +291,65 @@
 		</h2>
 
 		<p class="mt-4 text-slate-600 dark:text-slate-400">
-			Everything needed to build internal tools without building a frontend.
+			Everything needed to build internal tools without building an administration frontend from scratch.
 		</p>
 
 	</div>
 
 	<CardGrid>
 
-	<Card title="⚡ Annotation Driven">
-		Generate administration resources directly from annotated entities.
-	</Card>
+		<Card title="Annotation Driven">
 
-	<Card title="📋 CRUD Generation">
-		Create, edit, view and manage data without writing controllers or templates.
-	</Card>
+			Generate administration resources directly from annotated entities.
 
-	<Card title="🧩 Extensible">
-		Customize fields, resources, storage providers and security.
-	</Card>
+		</Card>
 
-	<Card title="🔒 Spring Security">
-		Integrates with your existing authentication and authorization.
-	</Card>
+		<Card title="CRUD Generation">
 
-	<Card title="☁ Storage Providers">
-		Local storage today, with Cloudinary and S3 integrations available.
-	</Card>
+			Create, edit, view and manage data without writing controllers or templates.
 
-	<Card title="🚀 Built for Spring Boot">
-		Works alongside your existing services, repositories and business logic.
-	</Card>
+		</Card>
 
-</CardGrid>
+		<Card title="Custom Actions">
+
+			Add application-specific actions directly to your administration interface.
+
+		</Card>
+
+		<Card title="Extensible">
+
+			Customize fields, resources, storage providers, security and administration behavior.
+
+		</Card>
+
+		<Card title="Spring Security">
+
+			Integrates with your existing authentication and authorization.
+
+		</Card>
+
+		<Card title="Built for Spring Boot">
+
+			Works alongside your existing services, repositories and business logic.
+
+		</Card>
+
+	</CardGrid>
 
 </section>
+
 
 <!-- Installation -->
 
 <section class="border-y border-slate-200 py-20 dark:border-slate-800">
 
-	<p class="mb-8 text-center text-slate-600 dark:text-slate-400">
-	Add a single dependency and annotate the entities you want to manage.
-</p>
-
 	<div class="mx-auto max-w-5xl px-6">
+
+		<p class="mb-8 text-center text-slate-600 dark:text-slate-400">
+
+			Add a single dependency and annotate the entities you want to manage.
+
+		</p>
 
 		<h2 class="mb-10 text-center text-4xl font-bold">
 			Install in Minutes
@@ -192,15 +359,15 @@
 
 			<Tab title="Gradle">
 
-<pre><code>implementation("com.bowerzlabs:kraft-admin:{version}")</code></pre>
+				<pre><code>implementation("com.kraftadmin:kraftadmin:{version}")</code></pre>
 
 			</Tab>
 
 			<Tab title="Maven">
 
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.bowerzlabs&lt;/groupId&gt;
-    &lt;artifactId&gt;kraft-admin&lt;/artifactId&gt;
+				<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.kraftadmin&lt;/groupId&gt;
+    &lt;artifactId&gt;kraftadmin&lt;/artifactId&gt;
     &lt;version&gt;{version}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 
@@ -212,6 +379,7 @@
 
 </section>
 
+
 <!-- How It Works -->
 
 <section class="mx-auto max-w-6xl px-6 py-20">
@@ -222,25 +390,34 @@
 
 	<Steps>
 
-	<Step title="Install">
-		Add the KraftAdmin dependency.
-	</Step>
+		<Step title="Install">
 
-	<Step title="Annotate">
-		Mark your entities with <code>@KraftAdminResource</code>.
-	</Step>
+			Add the KraftAdmin dependency.
 
-	<Step title="Run">
-		Start your Spring Boot application.
-	</Step>
+		</Step>
 
-	<Step title="Manage">
-		Open <code>/admin</code> and begin managing your data.
-	</Step>
+		<Step title="Annotate">
 
-</Steps>
+			Mark your entities with <code>@KraftAdminResource</code>.
+
+		</Step>
+
+		<Step title="Run">
+
+			Start your Spring Boot application.
+
+		</Step>
+
+		<Step title="Manage">
+
+			Open <code>/admin</code> and begin managing your data.
+
+		</Step>
+
+	</Steps>
 
 </section>
+
 
 <!-- Comparison -->
 
@@ -252,16 +429,18 @@
 			Build Less. Deliver More.
 		</h2>
 
-		<div class="overflow-hidden rounded-xl border dark:border-slate-800">
+		<div class="overflow-x-auto rounded-xl border dark:border-slate-800">
 
-			<table class="w-full">
+			<table class="w-full min-w-[700px]">
 
 				<thead class="bg-slate-100 dark:bg-slate-900">
 
 					<tr>
 
 						<th class="p-4 text-left"></th>
+
 						<th class="p-4">KraftAdmin</th>
+
 						<th class="p-4">Build Yourself</th>
 
 					</tr>
@@ -270,104 +449,155 @@
 
 				<tbody>
 
-					<tbody>
+					<tr class="border-t dark:border-slate-800">
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">CRUD UI</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">❌</td>
-	</tr>
+						<td class="p-4">CRUD UI</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Create & Edit Forms</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Included</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Detail Pages</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Manual</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Search</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+					</tr>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Pagination</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+					<tr class="border-t dark:border-slate-800">
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Sorting</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4">Create & Edit Forms</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Filtering</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Generated</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Relationship Handling</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Manual</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Bean Validation Integration</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+					</tr>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">File Upload Support</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+					<tr class="border-t dark:border-slate-800">
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Spring Security Integration</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4">Detail Pages</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Dark Mode</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Generated</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Responsive UI</td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+						<td class="p-4 text-center">Manual</td>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Telemetry <span class="text-xs text-slate-500">(Optional)</span></td>
-		<td class="p-4 text-center">✅</td>
-		<td class="p-4 text-center">Manual</td>
-	</tr>
+					</tr>
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Configuration</td>
-		<td class="p-4 text-center">Simple</td>
-		<td class="p-4 text-center">Extensive</td>
-	</tr>
+					<tr class="border-t dark:border-slate-800">
 
-	<tr class="border-t dark:border-slate-800">
-		<td class="p-4">Development Time</td>
-		<td class="p-4 text-center">Minutes</td>
-		<td class="p-4 text-center">Days–Weeks</td>
-	</tr>
+						<td class="p-4">Search</td>
 
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Pagination</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Sorting</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Filtering</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Relationship Handling</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Bean Validation Integration</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">File Upload Support</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Spring Security Integration</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Dark Mode</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Responsive UI</td>
+
+						<td class="p-4 text-center">Included</td>
+
+						<td class="p-4 text-center">Manual</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Configuration</td>
+
+						<td class="p-4 text-center">Simple</td>
+
+						<td class="p-4 text-center">Extensive</td>
+
+					</tr>
+
+					<tr class="border-t dark:border-slate-800">
+
+						<td class="p-4">Development Time</td>
+
+						<td class="p-4 text-center">Minutes</td>
+
+						<td class="p-4 text-center">Days–Weeks</td>
+
+					</tr>
 
 				</tbody>
 
@@ -379,12 +609,13 @@
 
 </section>
 
+
 <!-- CTA -->
 
 <section class="mx-auto max-w-4xl px-6 py-24 text-center">
 
 	<h2 class="text-5xl font-bold">
-		Build your admin panel in minutes.
+		Build your administration panel in minutes.
 	</h2>
 
 	<p class="mx-auto mt-6 max-w-2xl text-xl text-slate-600 dark:text-slate-400">
@@ -394,11 +625,11 @@
 
 	</p>
 
-	<div class="mt-10 flex justify-center gap-4">
+	<div class="mt-10 flex flex-wrap justify-center gap-4">
 
 		<a
 			href="/docs/introduction"
-			class="rounded-xl bg-indigo-600 px-8 py-4 font-semibold text-white hover:bg-indigo-500"
+			class="rounded-xl bg-indigo-600 px-8 py-4 font-semibold text-white transition hover:bg-indigo-500"
 		>
 			Read the Documentation
 		</a>
@@ -406,7 +637,8 @@
 		<a
 			href="https://github.com/bowerzlabs/kraftadmin"
 			target="_blank"
-			class="rounded-xl border border-slate-300 px-8 py-4 font-semibold hover:border-indigo-500 dark:border-slate-700"
+			rel="noopener noreferrer"
+			class="rounded-xl border border-slate-300 px-8 py-4 font-semibold transition hover:border-indigo-500 dark:border-slate-700"
 		>
 			View on GitHub
 		</a>
@@ -415,6 +647,11 @@
 
 </section>
 
-<div class="mt-5">
-		<div data-reach-form="9e819e0d-8a10-4973-b051-5c53a7203f89"></div>
-	</div>
+
+<!-- Feedback -->
+
+<div class="mx-auto max-w-5xl px-6 pb-10">
+
+	<div data-reach-form="9e819e0d-8a10-4973-b051-5c53a7203f89"></div>
+
+</div>

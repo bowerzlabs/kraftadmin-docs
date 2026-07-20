@@ -47,19 +47,6 @@ export const docsConfig: DocsConfig = {
             ]
         },
         {
-           title: "Appearance",
-           items: [
-             {
-                title: "Tables",
-                slug: "appearance/tables"
-             },
-             {
-                title: "Columns",
-                slug: "appearance/columns"
-             }
-           ]
-        },
-        {
 	title: "Fields",
 	items: [
 		{
@@ -110,10 +97,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: "Overview",
                     slug: "security/overview"
-                },
-                {
-                    title: "Layouts",
-                    slug: "getting-started/layouts"
                 }
             ]
         },
@@ -142,12 +125,12 @@ export const docsConfig: DocsConfig = {
             title: "Advanced",
             items: [
                 {
-                    title: "Tables",
-                    slug: "tables"
+                    title: "Actions",
+                    slug: "actions/actions"
                 },
                 {
-                    title: "Forms",
-                    slug: "api/forms"
+                    title: "Listeners",
+                    slug: "listeners/listeners"
                 }
             ]
         }

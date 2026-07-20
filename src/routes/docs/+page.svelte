@@ -5,17 +5,14 @@
 	<title>Prologue • KraftAdmin</title>
 </svelte:head>
 
-<section class="mx-auto max-w-5xl py-20">
+<section class="mx-auto max-w-5xl py-5">
 
 	<div
 		class="mb-12 rounded-xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/40"
 	>
 		<div class="flex items-start gap-3">
 
-			<div class="text-xl">
-				🚧
-			</div>
-
+	
 			<div>
 
 				<h2 class="font-semibold text-amber-900 dark:text-amber-200">

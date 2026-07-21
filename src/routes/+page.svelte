@@ -7,17 +7,121 @@
 	import Steps from '$lib/components/docs/Steps.svelte';
 	import Step from '$lib/components/docs/Step.svelte';
 
-	let { data } = $props();
-
-	const version = data.release.tag_name;
+	const version = "0.1.27-beta";
 </script>
 
 <svelte:head>
-	<title>KraftAdmin</title>
+	<title>KraftAdmin — Admin Panel & CRUD UI for Spring Boot</title>
+
 	<meta
 		name="description"
-		content="Metadata-driven administration engine for Spring Boot."
+		content="KraftAdmin automatically generates admin panels, CRUD interfaces, forms, search, filtering, relationships, file uploads, and dashboards from your Spring Boot entities."
 	/>
+
+	<meta
+		name="keywords"
+		content="Spring Boot admin panel, Spring Boot CRUD, Java admin panel, Kotlin admin panel, Spring Boot administration, JPA admin interface, Spring Security admin panel, internal tools Spring Boot"
+	/>
+
+	<meta name="robots" content="index, follow" />
+
+	<link rel="canonical" href="https://kraftadmin.com/" />
+
+	<!-- Open Graph -->
+
+	<meta
+		property="og:type"
+		content="website"
+	/>
+
+	<meta
+		property="og:site_name"
+		content="KraftAdmin"
+	/>
+
+	<meta
+		property="og:title"
+		content="KraftAdmin — Admin Panel & CRUD UI for Spring Boot"
+	/>
+
+	<meta
+		property="og:description"
+		content="Automatically generate powerful administration interfaces from your Spring Boot entities."
+	/>
+
+	<meta
+		property="og:url"
+		content="https://kraftadmin.com/"
+	/>
+
+	<meta
+		property="og:image"
+		content="https://kraftadmin.com/og-image.png"
+	/>
+
+	<meta
+		property="og:image:width"
+		content="1200"
+	/>
+
+	<meta
+		property="og:image:height"
+		content="630"
+	/>
+
+	<meta
+		property="og:image:alt"
+		content="KraftAdmin — Admin Panel for Spring Boot"
+	/>
+
+	<!-- Twitter / X -->
+
+	<meta
+		name="twitter:card"
+		content="summary_large_image"
+	/>
+
+	<meta
+		name="twitter:title"
+		content="KraftAdmin — Admin Panel & CRUD UI for Spring Boot"
+	/>
+
+	<meta
+		name="twitter:description"
+		content="Generate administration panels and CRUD interfaces directly from your Spring Boot entities."
+	/>
+
+	<meta
+		name="twitter:image"
+		content="https://kraftadmin.com/og-image.png"
+	/>
+
+	<!-- Software Application Structured Data -->
+
+	<script type="application/ld+json">
+		{JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareApplication',
+			name: 'KraftAdmin',
+			applicationCategory: 'DeveloperApplication',
+			operatingSystem: 'Any',
+			description:
+				'An annotation-driven administration framework for Spring Boot that generates CRUD interfaces and administration panels from application entities.',
+			url: 'https://kraftadmin.com/',
+			softwareVersion: version,
+			offers: {
+				'@type': 'Offer',
+				price: '0',
+				priceCurrency: 'USD'
+			},
+			applicationSubCategory: [
+				'Spring Boot Admin Panel',
+				'CRUD Framework',
+				'Developer Tools',
+				'Internal Tools'
+			]
+		})}
+	</script>
 </svelte:head>
 
 <!-- Hero -->

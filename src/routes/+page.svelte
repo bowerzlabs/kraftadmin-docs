@@ -754,8 +754,8 @@
 
 <!-- Feedback -->
 
-<div class="mx-auto max-w-5xl px-6 pb-10">
+<!-- <div class="mx-auto max-w-5xl px-6 pb-10">
 
 	<div data-reach-form="9e819e0d-8a10-4973-b051-5c53a7203f89"></div>
 
-</div>
+</div> -->

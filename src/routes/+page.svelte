@@ -6,6 +6,7 @@
 	import CardGrid from '$lib/components/docs/CardGrid.svelte';
 	import Steps from '$lib/components/docs/Steps.svelte';
 	import Step from '$lib/components/docs/Step.svelte';
+	import CopyCode from '$lib/components/docs/CopyCode.svelte';
 
 	const version = '0.1.27-beta';
 
@@ -31,6 +32,15 @@
 			priceCurrency: 'USD'
 		}
 	});
+
+	const gradleDependency =
+		'implementation("com.bowerzlabs:kraft-admin:0.1.27-beta")';
+
+	const mavenDependency = `<dependency>
+    <groupId>com.bowerzlabs</groupId>
+    <artifactId>kraft-admin</artifactId>
+    <version>0.1.27-beta</version>
+</dependency>`;
 </script>
 
 <svelte:head>
@@ -164,14 +174,6 @@
 			</span>
 
 		</div>
-
-		<div
-	class="mt-10 w-full max-w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
->
-	<code class="break-all">
-		implementation("com.kraftadmin:kraftadmin:{version}")
-	</code>
-</div>
 
 	</div>
 
@@ -418,25 +420,27 @@
 			Install in Minutes
 		</h2>
 
-		<Tabs>
+<Tabs>
 
-			<Tab title="Gradle">
+	<Tab title="Gradle">
 
-				<pre><code>implementation("com.kraftadmin:kraftadmin:{version}")</code></pre>
+		<CopyCode
+			code={gradleDependency}
+			language="Gradle"
+		/>
 
-			</Tab>
+	</Tab>
 
-			<Tab title="Maven">
+	<Tab title="Maven">
 
-				<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.kraftadmin&lt;/groupId&gt;
-    &lt;artifactId&gt;kraftadmin&lt;/artifactId&gt;
-    &lt;version&gt;{version}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+		<CopyCode
+			code={mavenDependency}
+			language="Maven"
+		/>
 
-			</Tab>
+	</Tab>
 
-		</Tabs>
+</Tabs>
 
 	</div>
 

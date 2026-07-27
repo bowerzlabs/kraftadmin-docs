@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/state';
+	import { Moon, Sun } from '@lucide/svelte';
 
     let {
         theme,
@@ -87,11 +88,11 @@
                 class="rounded-lg border border-slate-300 p-2 transition hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-900"
             >
 
-                {#if theme === 'dark'}
-                    🌙
-                {:else}
-                    ☀️
-                {/if}
+               {#if theme === 'dark'}
+	<Moon class="h-4 w-4" />
+{:else}
+	<Sun class="h-4 w-4" />
+{/if}
 
             </button>
 

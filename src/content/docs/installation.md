@@ -1,13 +1,7 @@
-
-<script>
-    import { version } from '$lib/constants/constants';
-</script>
-
 ---
 title: Installation
 description: Install KraftAdmin into your Spring Boot project.
---------------------------------------------------------------
-
+---
 
 # Installation
 
@@ -32,10 +26,10 @@ Before installing KraftAdmin, ensure your project uses:
 The latest stable release is:
 
 ```text
-{version}
+0.1.27-beta
 ```
 
-> The version shown above is retrieved automatically from the latest KraftAdmin release.
+The current release version is `0.1.27-beta`.
 
 ---
 
@@ -43,7 +37,7 @@ The latest stable release is:
 
 ```kotlin
 dependencies {
-    implementation("com.kraftadmin:kraftadmin:{version}")
+    implementation("com.bowerzlabs:kraft-admin:0.1.27-beta")
 }
 ```
 
@@ -53,7 +47,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.kraftadmin:kraftadmin:{version}'
+    implementation 'com.bowerzlabs:kraft-admin:0.1.27-beta'
 }
 ```
 
@@ -63,9 +57,9 @@ dependencies {
 
 ```xml
 <dependency>
-    <groupId>com.kraftadmin</groupId>
-    <artifactId>kraftadmin</artifactId>
-    <version>{version}</version>
+    <groupId>com.bowerzlabs</groupId>
+    <artifactId>kraft-admin</artifactId>
+    <version>0.1.27-beta</version>
 </dependency>
 ```
 
@@ -90,5 +84,3 @@ http://localhost:8080/admin
 ```
 
 The `/admin` path is currently the default and only supported administration path.
-
----

@@ -713,8 +713,42 @@
 
 <!-- Feedback -->
 
-<!-- <div class="mx-auto max-w-5xl px-6 pb-10">
+<div class="mx-auto max-w-5xl px-6 pb-10">
+	<form
+		action="https://buttondown.com/api/emails/embed-subscribe/nyadero"
+		method="post"
+		class="mx-auto max-w-xl rounded-2xl border border-border-subtle bg-bg-surface p-6 shadow-sm sm:p-8"
+	>
+		<div class="space-y-2">
+			<label
+				for="bd-email"
+				class="block text-sm font-semibold text-text-main"
+			>
+				Subscribe to the newsletter
+			</label>
 
-	<div data-reach-form="9e819e0d-8a10-4973-b051-5c53a7203f89"></div>
+			<p class="text-sm leading-relaxed text-text-muted">
+				Get occasional updates, ideas, and insights delivered straight to your inbox.
+			</p>
+		</div>
 
-</div> -->
+		<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+			<input
+				type="email"
+				name="email"
+				id="bd-email"
+				placeholder="you@example.com"
+				required
+				class="min-w-0 flex-1 rounded-xl border border-border-subtle bg-bg-main px-4 py-3 text-sm text-text-main outline-none transition placeholder:text-text-muted focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20"
+			/>
+
+			<button
+				type="submit"
+				class="rounded-xl bg-blue-500 px-5 text-white py-3 text-sm font-bold  transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:ring-offset-2"
+			>
+				Subscribe
+			</button>
+		</div>
+	</form>
+</div>
+

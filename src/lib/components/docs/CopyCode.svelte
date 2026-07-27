@@ -70,16 +70,16 @@
 </script>
 
 <div
-	class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-950 dark:border-slate-800"
+	class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950"
 >
 	<!-- Header -->
 
 	<div
-		class="flex items-center justify-between border-b border-slate-800 px-4 py-3"
+		class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800"
 	>
 		{#if language}
 			<span
-				class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+				class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
 			>
 				{language}
 			</span>
@@ -90,7 +90,7 @@
 		<button
 			type="button"
 			onclick={copyCode}
-			class="rounded-lg px-3 py-1.5 text-xs font-bold text-slate-400 transition hover:bg-slate-800 hover:text-white"
+			class="rounded-lg px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:bg-slate-200 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
 		>
 			{copied ? 'Copied!' : 'Copy'}
 		</button>
@@ -99,7 +99,7 @@
 	<!-- Code -->
 
 	<pre
-		class="overflow-x-auto p-5 text-sm leading-7 text-slate-200"
+		class="overflow-x-auto p-5 text-sm leading-7 text-slate-800 dark:text-slate-200"
 	><code>{code}</code></pre>
 </div>
 

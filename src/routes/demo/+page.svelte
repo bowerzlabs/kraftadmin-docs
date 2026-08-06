@@ -44,7 +44,7 @@
 			</p>
 
 			<a
-				href="https://github.com/orgs/Kraft-Admin/repositories"
+				href="https://github.com/orgs/bowerzlabs/repositories"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-500 sm:w-auto"

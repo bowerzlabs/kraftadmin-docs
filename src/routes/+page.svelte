@@ -8,7 +8,7 @@
 	import Step from '$lib/components/docs/Step.svelte';
 	import CopyCode from '$lib/components/docs/CopyCode.svelte';
 
-	const version = '0.1.27-beta';
+	const version = '0.1.28-beta';
 
 	const structuredData = JSON.stringify({
 		'@context': 'https://schema.org',
@@ -34,12 +34,12 @@
 	});
 
 	const gradleDependency =
-		'implementation("com.bowerzlabs:kraft-admin:0.1.27-beta")';
+		'implementation("com.bowerzlabs:kraft-admin:0.1.28-beta")';
 
 	const mavenDependency = `<dependency>
     <groupId>com.bowerzlabs</groupId>
     <artifactId>kraft-admin</artifactId>
-    <version>0.1.27-beta</version>
+    <version>0.1.28-beta</version>
 </dependency>`;
 </script>
 

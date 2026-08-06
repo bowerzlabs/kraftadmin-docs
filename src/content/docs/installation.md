@@ -29,7 +29,7 @@ The latest stable release is:
 0.1.27-beta
 ```
 
-The current release version is `0.1.27-beta`.
+The current release version is `0.1.28-beta`.
 
 ---
 
@@ -37,7 +37,7 @@ The current release version is `0.1.27-beta`.
 
 ```kotlin
 dependencies {
-    implementation("com.bowerzlabs:kraft-admin:0.1.27-beta")
+    implementation("com.bowerzlabs:kraft-admin:0.1.28-beta")
 }
 ```
 
@@ -47,7 +47,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.bowerzlabs:kraft-admin:0.1.27-beta'
+    implementation 'com.bowerzlabs:kraft-admin:0.1.28-beta'
 }
 ```
 
@@ -59,7 +59,7 @@ dependencies {
 <dependency>
     <groupId>com.bowerzlabs</groupId>
     <artifactId>kraft-admin</artifactId>
-    <version>0.1.27-beta</version>
+    <version>0.1.28-beta</version>
 </dependency>
 ```
 

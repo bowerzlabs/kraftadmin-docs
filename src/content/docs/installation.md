@@ -26,7 +26,7 @@ Before installing KraftAdmin, ensure your project uses:
 The latest stable release is:
 
 ```text
-0.1.27-beta
+0.1.28-beta
 ```
 
 The current release version is `0.1.28-beta`.

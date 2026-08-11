@@ -1,63 +1,68 @@
 <script lang="ts">
-	import './layout.css';
+    import './layout.css';
+    import { onMount } from 'svelte';
 
-	import { onMount } from 'svelte';
+    import Navbar from '$lib/components/Navbar.svelte';
+    import Footer from '$lib/components/Footer.svelte';
+    import CookieConsent from '$lib/components/CookieConsent.svelte';
 
-	import favicon from '$lib/assets/favicon.svg';
+    import { dev } from '$app/environment';
+    import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+    injectAnalytics({
+        mode: dev ? 'development' : 'production'
+    });
 
-	import { dev } from '$app/environment';
-	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+    let { children } = $props();
 
-	injectAnalytics({ mode: dev ? 'development' : 'production' });
+    let theme = $state<'light' | 'dark'>('dark');
 
-	let { children } = $props();
+    onMount(() => {
+        const savedTheme = localStorage.getItem('theme') as
+            | 'light'
+            | 'dark'
+            | null;
 
-	let theme = $state<'light' | 'dark'>('dark');
+        if (savedTheme) {
+            theme = savedTheme;
+        } else {
+            theme =
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+        }
+    });
 
-	onMount(() => {
-		const savedTheme = localStorage.getItem('theme') as
-			| 'light'
-			| 'dark'
-			| null;
+    $effect(() => {
+        document.documentElement.classList.toggle(
+            'dark',
+            theme === 'dark'
+        );
 
-		if (savedTheme) {
-			theme = savedTheme;
-		} else {
-			theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: 'light';
-		}
-	});
+        localStorage.setItem('theme', theme);
+    });
 
-	$effect(() => {
-		document.documentElement.classList.toggle(
-			'dark',
-			theme === 'dark'
-		);
-
-		localStorage.setItem('theme', theme);
-	});
-
-	function toggleTheme() {
-		theme = theme === 'dark' ? 'light' : 'dark';
-	}
+    function toggleTheme() {
+        theme = theme === 'dark' ? 'light' : 'dark';
+    }
 </script>
 
 <svelte:head>
-	<link rel="icon" href="/kraftadmin.png" />
+    <link rel="icon" href="/kraftadmin.png" />
 </svelte:head>
 
 <div
-	class="min-h-screen bg-slate-100 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100"
+    class="min-h-screen bg-slate-100 text-slate-900
+           transition-colors duration-300
+           dark:bg-slate-950 dark:text-slate-100"
 >
-	<Navbar {theme} {toggleTheme} />
+    <Navbar {theme} {toggleTheme} />
 
-	<main class="min-h-screen">
-		{@render children()}
-	</main>
+    <main class="min-h-screen">
+        {@render children()}
+    </main>
 
-	<Footer />
+    <Footer />
+
+    <CookieConsent />
 </div>
